@@ -891,8 +891,8 @@ contract HBTPresale is Ownable {
     uint256 public constant REFERRAL_COMISSION = 25; //2.5%
     uint256 public constant BONUS = 25; //2.5%
 
-    uint256 constant ONE_DAY = 60;
-    uint256 public constant ONE_MONTH = 1 * ONE_DAY;
+    uint256 constant ONE_DAY = 1 days;
+    uint256 public constant ONE_MONTH = 30 * ONE_DAY;
 
     uint256 public tokenPrice;
     bool public isParticipationOpen;

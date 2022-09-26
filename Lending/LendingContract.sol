@@ -796,7 +796,7 @@ contract HBTLending is Ownable {
 
     IRewardManager public REWARDMANAGER;
 
-    uint256 public constant ONE_DAY = 10;
+    uint256 public constant ONE_DAY = 1 days;
     uint256 public interestFreeDays = ONE_DAY * 21;
     uint256 public confiscationDeadline = ONE_DAY * 366;
 
