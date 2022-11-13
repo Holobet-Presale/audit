@@ -68,6 +68,5 @@ contract RewardManager is Ownable {
 
     function withdrawStuckTokens(IERC20 token) public  onlyOwner{
         token.safeTransfer(msg.sender, token.balanceOf(address(this)));
-
     }
 }
