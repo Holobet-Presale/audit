@@ -1,3 +1,5 @@
+
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -9,12 +11,6 @@ interface IHBTLendingStaking {
         external
         view
         returns (uint256 amount, bool hasTakenLoan);
-
-    function chargeInterest(address user, uint256 amount) external;
-
-    function manageLoan(address user, bool hasTakenLoan) external;
-
-    function confiscateStaking(address _user) external;
 }
 
 contract RewardManager is Ownable {

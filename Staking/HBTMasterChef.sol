@@ -25,14 +25,12 @@ contract HBTMasterChef is Ownable, ReentrancyGuard {
     struct PoolInfo {
         IERC20 lpToken; // Address of LP token contract.
         uint256 allocPoint;
-        uint256 lastRewardBlock;
         uint256 totalTokensLocked; // totalTokensLocked in pool
     }
 
     PoolInfo public poolInfo;
 
     mapping(address => UserInfo) public userInfo;
-    uint256 public immutable startBlock;
 
     event Deposit(address indexed user, uint256 amount);
     event Withdraw(address indexed user, uint256 amount);
@@ -40,10 +38,8 @@ contract HBTMasterChef is Ownable, ReentrancyGuard {
 
 
     constructor(
-        IERC20 _hbt,
-        uint256 _startBlock
+        IERC20 _hbt
     ) {
-        startBlock = block.number;
      
         add(1000, _hbt);
     }
@@ -54,13 +50,10 @@ contract HBTMasterChef is Ownable, ReentrancyGuard {
        
     ) internal {
       
-        uint256 lastRewardBlock = block.number > startBlock
-            ? block.number
-            : startBlock;
+       
         poolInfo = PoolInfo({
             lpToken: _lpToken,
             allocPoint: _allocPoint,
-            lastRewardBlock: lastRewardBlock,
             totalTokensLocked: 0
         });
     }
