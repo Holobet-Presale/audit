@@ -125,8 +125,10 @@ contract HBTVault is ERC20, Ownable, ReentrancyGuard {
         require(depositWhitelist[msg.sender], "Cannot deposit");
         strategy.beforeDeposit();
         uint256 _pool = balance();
-        want().safeTransferFrom(msg.sender, address(this), _amount);
+        uint256 preBalance = want().balanceOf(address(this));
 
+        want().safeTransferFrom(msg.sender, address(this), _amount);
+        _amount = want().balanceOf(address(this))-preBalance;
         earn(_amount);
         uint256 _after = balance();
         _amount = _after.sub(_pool); // Additional check for deflationary tokens

@@ -107,7 +107,6 @@ library DSMath {
 contract HBTLending is Ownable {
     using SafeERC20 for IERC20;
     IHBTLendingStaking public immutable stakingContract;
-
     struct Loan {
         uint256 amount;
         uint256 loanTime;

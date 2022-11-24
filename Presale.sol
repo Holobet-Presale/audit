@@ -59,11 +59,9 @@ contract HBTPresale is Ownable {
 
     uint256 constant ONE_DAY = 1 days;
     uint256 public constant ONE_MONTH = 30 * ONE_DAY;
-
     uint256 public tokenPrice;
     bool public isParticipationOpen;
-    uint256 constant MAX_INT =
-        0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
+    uint256 constant MAX_INT = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
     uint256 public presaleEndTime;
 
     event onClaim(uint256 hbtAmount, uint256 hbtReward);

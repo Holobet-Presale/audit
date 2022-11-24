@@ -66,7 +66,9 @@ contract PriceBacking is Ownable {
 
     function convert(uint256 hbtAmount) public {
         require(isEnabled, "convert not enabled");
+        uint256 preBalance = HBT.balanceOf(address(this));
         HBT.safeTransferFrom(msg.sender, address(this), hbtAmount);
+        hbtAmount = HBT.balanceOf(address(this))-preBalance;
         uint256 usdcAmount = HBTToUSDC(hbtAmount);
         HBT.safeTransfer(DEAD_ADDRESS, hbtAmount);
         USDC.safeTransfer(msg.sender, usdcAmount);
