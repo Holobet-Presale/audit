@@ -15,7 +15,6 @@ interface IStrategy {
 
     function want() external view returns (IERC20);
 
-    function beforeDeposit() external;
 
     function deposit() external;
 
@@ -123,7 +122,6 @@ contract HBTVault is ERC20, Ownable, ReentrancyGuard {
     function deposit(uint256 _amount) public nonReentrant {
         require(_amount > 0, "amount should be more than zero");
         require(depositWhitelist[msg.sender], "Cannot deposit");
-        strategy.beforeDeposit();
         uint256 _pool = balance();
         uint256 preBalance = want().balanceOf(address(this));
 

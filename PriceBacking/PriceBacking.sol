@@ -56,7 +56,7 @@ contract PriceBacking is Ownable {
     function HBTToUSDCRate() public view returns (uint256) {
         uint256 HBTCirculation = getCirculationSupply();
         uint256 USDCBalance = USDC.balanceOf(address(this));
-        return ((USDCBalance) * 1e6) / (HBTCirculation/1e12);
+        return (USDCBalance * 1e6) / HBTCirculation/1e12;
     }
 
     function HBTToUSDC(uint256 hbtAmount) public view returns (uint256) {

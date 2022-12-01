@@ -35,7 +35,7 @@ contract StratManager is Ownable, Pausable {
 
     constructor(address _keeper, address _vault) {
         require(_keeper != address(0),"Please Enter Valid Address");
-
+        require(_vault != address(0),"Please Enter Valid Address");
         keeper = _keeper;
         vault = _vault;
     }

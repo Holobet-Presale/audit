@@ -31,6 +31,7 @@ contract RewardManager is Ownable {
         address _lendingManager
     ) {
         REWARDTOKEN = _REWARDTOKEN;
+        require(address(_stakingContract) != address(0) && _lendingManager != address(0));
         stakingContract = _stakingContract;
         lendingManager = _lendingManager;
     }
